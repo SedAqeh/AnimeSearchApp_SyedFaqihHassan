@@ -1,0 +1,62 @@
+@use "../../assets/styles/colors" as *;
+@use "../../assets/styles/mixins" as *;
+
+.theme-toggle {
+  position: fixed;
+  top: 1em;
+  right: 1.2em;
+  z-index: 150;
+  background: var(--color-gradient);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  cursor: pointer;
+  box-shadow: 0 0.25em 0.75em rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease, background 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25em;
+
+  &:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0.4em 1.25em rgba(255, 107, 159, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &.dark {
+    background: var(--color-gradient);
+  }
+
+  &.light {
+    background: linear-gradient(135deg, #ff8fab, #8a63f8);
+  }
+
+  .icon {
+    transition: transform 0.4s ease;
+  }
+
+  &.light .icon {
+    transform: rotate(0deg);
+  }
+
+  &.dark .icon {
+    transform: rotate(180deg);
+  }
+}
+
+/* mobile */
+@media (max-width: 40em) {
+  .theme-toggle {
+    width: 2.5em;
+    height: 2.5em;
+    top: 1em;
+    right: 1em;
+    font-size: 1.1em;
+  }
+}

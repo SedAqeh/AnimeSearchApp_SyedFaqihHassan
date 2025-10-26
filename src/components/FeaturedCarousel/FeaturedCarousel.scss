@@ -1,0 +1,143 @@
+@use "../../assets/styles/colors" as *;
+@use "../../assets/styles/mixins" as *;
+
+/* ===== WRAPPER ===== */
+.carousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 0.5em;
+  transition: all 0.4s ease;
+  will-change: transform, opacity, height;
+  height: 12em;
+  box-shadow: var(--shadow-soft);
+  @include theme-transition;
+
+  &:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-button);
+  }
+}
+
+.carousel-title {
+  font-weight: 700;
+  font-size: 1em;
+  margin: 0 0 1em 0;
+  color: var(--color-text);
+  @include theme-transition;
+}
+
+/* ===== AUTO SCROLL LOOP ===== */
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 25s linear infinite;
+  animation-play-state: running;
+}
+
+.carousel-wrapper:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+/* ===== ITEMS ===== */
+.carousel-item {
+  position: relative;
+  min-width: 11em; /* ~176px */
+  height: 8em;
+  margin-right: 1em;
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  @include theme-transition;
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  transition: transform 0.4s ease;
+}
+
+/* ===== Overlay text ===== */
+.carousel-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5em 0.75em;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Skeletons ===== */
+.carousel-item.skeleton {
+  background: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    var(--color-surface) 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius);
+}
+
+/* ===== Animations ===== */
+@keyframes scrollLoop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ===== Mobile Adjustments ===== */
+@media (max-width: 40em) {
+  .carousel-wrapper {
+    height: 9em;
+    border-radius: calc(var(--radius) * 0.75);
+  }
+
+  .carousel-item {
+    min-width: 9em;
+    height: 6em;
+    margin-right: 0.5em;
+  }
+
+  .carousel-overlay {
+    font-size: 0.75em;
+    padding: 0.25em 0.5em;
+  }
+}

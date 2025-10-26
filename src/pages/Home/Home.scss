@@ -1,0 +1,125 @@
+@use "../../assets/styles/colors" as *;
+@use "../../assets/styles/mixins" as *;
+
+/* =============================
+   MAIN CONTAINER
+============================= */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: stretch;
+  background: var(--color-bg);
+  overflow: visible;
+  width: 100%;
+  box-sizing: border-box;
+  color: var(--color-text);
+  @include theme-transition;
+}
+
+/* =============================
+   CONTENT WRAP
+============================= */
+.content-wrap {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: var(--spacing);
+  overflow: visible;
+}
+
+/* =============================
+   GRID
+============================= */
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11em, 1fr));
+  gap: 1em;
+  padding: 0.5em 0;
+}
+
+/* =============================
+   STATUS TEXTS
+============================= */
+.end-text,
+.loading-text,
+.error-message {
+  text-align: center;
+  font-size: 0.9em;
+  margin: 1em 0;
+}
+
+.end-text {
+  color: var(--color-text-muted);
+}
+
+.loading-text {
+  color: var(--color-primary);
+  margin: 1.25em 0;
+  font-size: 1em;
+}
+
+.error-message {
+  color: var(--color-accent);
+}
+
+/* =============================
+   SCROLL TO TOP
+============================= */
+.scroll-sentinel {
+  height: 2em;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 1.5em;
+  right: 1.5em;
+  width: 3em;
+  height: 3em;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-gradient);
+  color: #fff;
+  font-size: 1.25em;
+  cursor: pointer;
+  box-shadow: 0 0.25em 1em rgba(255, 107, 159, 0.3);
+  transition: all 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+
+  &.visible {
+    opacity: 0.9;
+    pointer-events: all;
+  }
+
+  &:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-0.25em);
+    box-shadow: 0 0.4em 1.25em rgba(255, 134, 179, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0.1em);
+  }
+}
+
+/* =============================
+   MOBILE
+============================= */
+@media (max-width: 40em) {
+  .anime-grid {
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    gap: 0.75em;
+  }
+
+  .scroll-top-btn {
+    bottom: 1em;
+    right: 1em;
+    width: 2.5em;
+    height: 2.5em;
+    font-size: 1.25em;
+  }
+}

@@ -1,0 +1,99 @@
+@use "../../assets/styles/colors" as *;
+@use "../../assets/styles/mixins" as *;
+
+.anime-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 0.1em solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  min-height: var(--anime-card-height);
+  box-shadow: var(--shadow-soft);
+  @include theme-transition;
+}
+
+.anime-img {
+  width: 100%;
+  height: var(--anime-image-height);
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.anime-info {
+  padding: var(--spacing);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5em;
+  flex: 1 1 auto;
+
+  .anime-title {
+    font-size: var(--font-size-lg, 1.25em);
+    font-weight: 700;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+  }
+
+  .anime-meta {
+    font-size: var(--font-size-sm, 0.85em);
+    color: var(--color-text-muted);
+  }
+}
+
+.fav-btn {
+  position: absolute;
+  top: 0.75em;
+  right: 0.75em;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius);
+  padding: 0.4em 0.6em;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  @include theme-transition;
+
+  &:hover {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  &.active {
+    background: var(--color-accent-hover);
+    color: #fff;
+  }
+}
+
+.anime-rating {
+  display: flex;
+  align-items: center;
+  margin-top: 0.25em;
+
+  .star {
+    font-size: 1em;
+    color: #ccc;
+    margin-right: 0.15em;
+    transition: color 0.2s ease;
+  }
+
+  .star.filled {
+    color: #f5c518;
+  }
+
+  .score-text {
+    font-size: 0.85em;
+    color: #aaa;
+    margin-left: 0.3em;
+  }
+}
+
+.anime-meta {
+  p {
+    font-size: 0.9em;
+  }
+}

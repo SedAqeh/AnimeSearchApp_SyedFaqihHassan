@@ -1,0 +1,101 @@
+@use "../../assets/styles/colors" as *;
+@use "../../assets/styles/mixins" as *;
+
+/* ===== SKELETON CARD ===== */
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 0.1em solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  min-height: var(--anime-card-height);
+  animation: fadeIn 0.25s ease-in;
+  @include theme-transition;
+}
+
+/* ===== SKELETON IMAGE ===== */
+.skeleton-img {
+  width: 100%;
+  height: var(--anime-image-height);
+  background: var(--color-border);
+  flex-shrink: 0;
+  border-bottom: 0.1em solid var(--color-border);
+  @include theme-transition;
+}
+
+/* ===== SKELETON INFO ===== */
+.skeleton-info {
+  padding: 0.75em 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+/* ===== SKELETON LINES ===== */
+.skeleton-line {
+  height: 1em;
+  background: var(--color-border);
+  border-radius: 0.25em;
+  overflow: hidden;
+  position: relative;
+  @include theme-transition;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -9em;
+    height: 100%;
+    width: 9em;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 1.4s infinite;
+  }
+}
+
+/* ===== SHIMMER ANIMATION ===== */
+@keyframes shimmer {
+  0% {
+    left: -9em;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ===== FADE-IN ANIMATION ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== DARK THEME ENHANCEMENTS ===== */
+[data-theme="dark"] {
+  .skeleton-line,
+  .skeleton-img {
+    background: color-mix(in srgb, var(--color-border) 80%, black 20%);
+  }
+
+  .skeleton-line::after {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+}

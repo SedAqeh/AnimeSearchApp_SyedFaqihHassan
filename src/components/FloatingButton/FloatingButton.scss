@@ -1,0 +1,45 @@
+@use "../../assets/styles/colors" as *;
+@use "../../assets/styles/mixins" as *;
+
+.floating-btn {
+  position: fixed;
+  bottom: 4.5em;
+  right: 1.5em;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-surface);
+  background: var(--color-accent);
+  font-size: 1.5em;
+  text-decoration: none;
+  box-shadow: var(--shadow-button);
+  transition: all 0.25s ease;
+  z-index: 1000;
+  cursor: pointer;
+  @include theme-transition;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  .icon {
+    font-size: 1.4em;
+    line-height: 1;
+  }
+
+  .count {
+    position: absolute;
+    top: -0.25em;
+    right: -0.25em;
+    background: var(--color-surface);
+    color: var(--color-accent);
+    font-size: 0.7em;
+    border-radius: 50%;
+    padding: 0.2em 0.45em;
+    font-weight: 600;
+    line-height: 1;
+  }
+}
