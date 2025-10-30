@@ -1,4 +1,4 @@
-# 🎌 Anime Explorer — YoPrint React Coding Project
+# 🎌 Anime Search App — React Coding Project
 
 A responsive **React + TypeScript** single-page application built with **Vite**, using the [Jikan API](https://docs.api.jikan.moe/) to search, browse, and favorite anime.
 It demonstrates modern React architecture, Redux Toolkit state management, and polished SCSS-based UI theming.
@@ -13,7 +13,7 @@ It demonstrates modern React architecture, Redux Toolkit state management, and p
 
 ## 🧠 Overview
 
-This project was developed for ae **Frontend Coding Challenge**, showcasing proficiency in React, Redux, TypeScript, and frontend architecture design.
+This project was developed for a **Frontend Coding Challenge**, showcasing proficiency in React, Redux, TypeScript, and frontend architecture design.
 
 ### 👾 Users can:
 
@@ -138,7 +138,7 @@ src/
 
 ---
 
-## 🧙‍♂️ YoPrint Project Compliance Checklist
+## 🧙‍♂️ Project Compliance Checklist
 
 | Requirement                                | Status |
 | ------------------------------------------ | ------ |
@@ -171,7 +171,7 @@ src/
 ## 🧠 Development Notes
 
 - Built with **Vite + React 18** for fast HMR and zero-config dev setup
-- The dev server is locked to **port 4000** per YoPrint spec
+- The dev server is locked to **port 4000** 
 - Uses **strict TypeScript** for full type safety
 - Redux slices are modular and easy to extend
 - Smooth UI transitions powered by SCSS mixins
